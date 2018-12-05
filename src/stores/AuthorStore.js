@@ -10,6 +10,7 @@ class AuthorStore {
     this.authors = [];
     this.loading = true;
     this.query = "";
+    this.statusMessage = "";
   }
 
   fetchAuthors() {
@@ -20,7 +21,18 @@ class AuthorStore {
         this.authors = authors;
         this.loading = false;
       })
-      .catch(err => console.error(err));
+      .catch(err => console.error(err.response));
+  }
+
+  addAuthor(newAuthor) {
+    instance
+      .post("/api/authors/", newAuthor)
+      .then(res => res.data)
+      .then(author => {
+        this.authors.push(author);
+        this.statusMessage = "Success";
+      })
+      .catch(err => (this.statusMessage = err.response));
   }
 
   get filteredAuthors() {

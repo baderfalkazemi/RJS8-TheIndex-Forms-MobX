@@ -20,7 +20,22 @@ class BookStore {
         this.books = books;
         this.loading = false;
       })
-      .catch(err => console.error(err));
+      .catch(error => console.error(error));
+  }
+
+  addBook(newBook, authorID) {
+    newBook = {
+      ...newBook,
+      authors: [authorID]
+    };
+    instance
+      .post("/api/books/", newBook)
+      .then(res => res.data)
+      .then(book => {
+        this.books.push(book);
+        this.statusMessage = "Success";
+      })
+      .catch(error => (this.statusMessage = error.response));
   }
 
   get filteredBooks() {
