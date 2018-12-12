@@ -29,7 +29,7 @@ class AuthorStore {
       .post("/api/authors/", newAuthor)
       .then(res => res.data)
       .then(author => {
-        this.authors.push(author);
+        this.authors.unshift(author);
         this.statusMessage = "Success";
       })
       .catch(err => (this.statusMessage = err.response));

@@ -27,7 +27,7 @@ class AddAuthorCard extends Component {
       <div className="col-lg-4 col-md-6 col-12">
         <div>
           <Modal open={open} onClose={this.onCloseModal} center>
-            <AuthorForm />
+            <AuthorForm closeModal={this.onCloseModal} />
           </Modal>
         </div>
         <div className="card" onClick={this.onOpenModal}>

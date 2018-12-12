@@ -22,7 +22,7 @@ class AuthorForm extends Component {
   submitAuthor(event) {
     event.preventDefault();
     authorStore.addAuthor(this.state);
-    console.log(authorStore.statusMessage);
+    this.props.closeModal();
   }
   render() {
     return (

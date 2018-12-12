@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { observer } from "mobx-react";
 
 // Components
 import BookTable from "./BookTable";
@@ -25,10 +26,10 @@ class AuthorDetail extends Component {
           />
         </div>
         <BookTable books={books} />
-        <AddBookModal authorID={author.id} />
+        <AddBookModal author={author} />
       </div>
     );
   }
 }
 
-export default AuthorDetail;
+export default observer(AuthorDetail);
